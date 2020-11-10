@@ -1,0 +1,15 @@
+body{
+    background-image: url(stage.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+img{
+    position: absolute;
+    left:  675px;
+    top: 250px;
+}
