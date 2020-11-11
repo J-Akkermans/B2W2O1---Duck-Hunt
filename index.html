@@ -7,8 +7,19 @@
     <title>Duckhunt</title>
 </head>
 <body>
-    <div>
-        <img id="img" src="duck.gif" alt="aa">
+    <div id="win" class="d-none">
+        <h1>You won</h1>
+        <button onclick="restart()">restart</button>
+    </div>
+    <div id="lose" class="d-none">
+        <h1>You lost</h1>
+        <button onclick="restart()">restart</button>
+    </div>
+    <div id="bg" onclick="hitOrMiss(0)"> </div>
+    <img onclick="hitOrMiss(1)" id="img" src="duck.gif" alt="aa">
+    <div class="score">
+        <h4>Hit: <span id="scoreCount">0</span></h4>
+        <h4>Miss: <span id="missCount">0</span></h4>
     </div>
 
     <script src="script.js"></script>

@@ -1,8 +1,10 @@
-var directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
-var img = document.getElementById("img");
+const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+const img = document.getElementById("img");
 
 var step = 75;
 
+var scorePrint = document.getElementById("scoreCount");
+var missCount = document.getElementById("missCount");
 
 function fly(direction) {
     direction = direction.toLowerCase();
@@ -89,12 +91,40 @@ function fly(direction) {
     }
 }
 
+
+
+var miss = 0;
+var score = 0;
+
+function hitOrMiss(id) {
+    console.log(miss)
+    switch (id) {
+        case 0:
+            missCount.innerHTML = miss++;
+            break;
+        case 1:
+            scorePrint.innerHTML = score++;
+            break;
+    }
+    if(score == 21){
+        document.getElementById("win").classList.remove("d-none");
+    }else if(miss == 21){
+        document.getElementById("lose").classList.remove("d-none");
+    }
+}
+
+function restart(){
+    window.location.reload()
+}
+
 function moveDuck() {
     setInterval(function () {
         //Code dat iedere 0,5 seconden uitgevoerd wordt.
-
-
+        var random = directions[Math.floor(Math.random() * directions.length)];
+        fly(random)
     }, 500); //Hoe lang de interval is tussen uitvoering van deze functie.
 }
 
-fly('n');
+
+
+moveDuck()

@@ -3,6 +3,11 @@
     padding: 0;
 }
 body{
+
+    overflow: hidden;
+}
+
+#bg{
     background-image: url(stage.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,8 +15,6 @@ body{
     height: 100vh;
     overflow: hidden;
 }
-
-
 img{
     position: absolute;
     left:  750px;
@@ -19,3 +22,57 @@ img{
     right: 0px;
     bottom: 0px;
 }
+
+.score{
+    position: absolute;
+    top: 0;
+}
+
+#win{
+    position: absolute;
+    left:  450px;
+    top: 300px;
+    font-size: 100px;
+    z-index: 1;
+    color: white;
+    background-color: green;
+    padding-bottom: 50px;
+    padding-right: 20px;
+    padding-left: 20px;    
+    border-radius: 20px;
+}
+
+#lose{
+    position: absolute;
+    left:  450px;
+    top: 300px;
+    font-size: 100px;
+    z-index: 1;
+    color: white;
+    background-color: red;
+    padding-bottom: 50px;
+    padding-right: 20px;
+    padding-left: 20px;    
+    border-radius: 20px;
+}
+
+
+
+button{
+    position: absolute;
+    top: 200px;
+    left: 340px;
+    padding: 20px;
+    background-color: 0;
+    text-transform: uppercase;
+    background-color: greenyellow;
+    border: none;
+    border-radius: 20px;
+    
+}
+
+.d-none{
+    display: none;
+}
+
+
