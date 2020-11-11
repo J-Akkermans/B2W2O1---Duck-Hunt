@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
     background-image: url(stage.png);
     background-repeat: no-repeat;
@@ -10,6 +14,8 @@ body{
 
 img{
     position: absolute;
-    left:  675px;
-    top: 250px;
+    left:  750px;
+    top: 300px;
+    right: 0px;
+    bottom: 0px;
 }
