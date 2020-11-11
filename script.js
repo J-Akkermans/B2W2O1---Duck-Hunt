@@ -14,7 +14,6 @@ function fly(direction) {
     switch (direction) { //Tussen de haakjes staat de expressie, en case de vergelijking die equal moet zijn.
         case 'n':
             if (top == 0) {
-                alert("test");
             } else {
                 top = top - step;
                 img.style.top = top + "px";
@@ -22,7 +21,6 @@ function fly(direction) {
             break;
         case 'ne':
             if (top == 0 || left == 1650) {
-                alert('test')
             } else {
                 left = left + step;
                 img.style.left = left + "px";
@@ -32,7 +30,6 @@ function fly(direction) {
             break;
         case 'e':
             if (left == 1650) {
-                alert('test');
             } else {
                 left = left + step;
                 img.style.left = left + "px";
@@ -40,18 +37,15 @@ function fly(direction) {
             break;
         case 'se':
             if (top == 750 || left == 1650) {
-                alert('test')
             } else {
                 left = left + step;
                 img.style.left = left + "px";
-
                 top = top + step;
                 img.style.top = top + "px";
             }
             break;
         case 's':
             if (top == 750) {
-                alert('test')
             } else {
                 top = top + step;
                 img.style.top = top + "px";
@@ -59,18 +53,15 @@ function fly(direction) {
             break;
         case 'sw':
             if (top == 750 || left == 0) {
-                alert('test')
             } else {
                 left = left - step;
                 img.style.left = left + "px";
-
                 top = top + step;
                 img.style.top = top + "px";
             }
             break;
         case 'w':
             if (left == 0) {
-                alert('test')
             } else {
                 left = left - step;
                 img.style.left = left + "px";
@@ -78,7 +69,6 @@ function fly(direction) {
             break;
         case 'nw':
             if (top == 750 || left == 0) {
-                alert('test')
             } else {
                 left = left - step;
                 img.style.left = left + "px";
@@ -106,14 +96,14 @@ function hitOrMiss(id) {
             scorePrint.innerHTML = score++;
             break;
     }
-    if(score == 21){
+    if (score == 21) {
         document.getElementById("win").classList.remove("d-none");
-    }else if(miss == 21){
+    } else if (miss == 21) {
         document.getElementById("lose").classList.remove("d-none");
     }
 }
 
-function restart(){
+function restart() {
     window.location.reload()
 }
 
