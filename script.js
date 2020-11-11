@@ -88,6 +88,7 @@ var score = 0;
 
 function hitOrMiss(id) {
     console.log(miss)
+    if(miss <21 && score < 21){
     switch (id) {
         case 0:
             missCount.innerHTML = miss++;
@@ -101,6 +102,7 @@ function hitOrMiss(id) {
     } else if (miss == 21) {
         document.getElementById("lose").classList.remove("d-none");
     }
+}
 }
 
 function restart() {
