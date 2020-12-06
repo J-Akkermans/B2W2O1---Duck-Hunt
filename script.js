@@ -1,122 +1,108 @@
-const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
-const img = document.getElementById("img");
-
+var directions = ["N", "NE", "E", "SE", "S", "SW", "NW", "N"];
+var duck = document.getElementById("duck");
 var step = 75;
-
-var scorePrint = document.getElementById("scoreCount");
-var missCount = document.getElementById("missCount");
-
-function fly(direction) {
-    direction = direction.toLowerCase();
-    var top = document.getElementById('img').offsetTop;
-    var left = document.getElementById('img').offsetLeft;
-
-    switch (direction) { //Tussen de haakjes staat de expressie, en case de vergelijking die equal moet zijn.
-        case 'n':
-            if (top == 0) {
-            } else {
-                top = top - step;
-                img.style.top = top + "px";
+var topValue = duck.offsetTop;
+var leftValue = duck.offsetLeft;
+function fly(directions) {
+    console.log(topValue + " " + leftValue);
+    switch (directions) {
+        case "N":
+            if (topValue >= 0) {
+                topValue = topValue - step;
+                duck.style.top = topValue + "px";
+                duck.style.transform = "rotate(-90deg)";
             }
             break;
-        case 'ne':
-            if (top == 0 || left == 1650) {
-            } else {
-                left = left + step;
-                img.style.left = left + "px";
-                top = top - step;
-                img.style.top = top + "px";
+        case "NE":
+            if (topValue >= 0 && leftValue <= 2000) {
+                topValue = topValue - step;
+                leftValue = leftValue + step;
+                duck.style.left = leftValue + "px";
+                duck.style.top = topValue + "px";
+                duck.style.transform = "rotate(-30deg)";
             }
             break;
-        case 'e':
-            if (left == 1650) {
-            } else {
-                left = left + step;
-                img.style.left = left + "px";
+        case "E":
+            if (leftValue <= 2000) {
+                leftValue = leftValue + step;
+                duck.style.left = leftValue + "px";
+                duck.style.transform = "scaleX(1)";
             }
             break;
-        case 'se':
-            if (top == 750 || left == 1650) {
-            } else {
-                left = left + step;
-                img.style.left = left + "px";
-                top = top + step;
-                img.style.top = top + "px";
+        case "SE":
+            if (topValue <= 1000 && leftValue <= 1700) {
+                topValue = topValue + step;
+                leftValue = leftValue + step;
+                duck.style.left = leftValue + "px";
+                duck.style.top = topValue + "px";
+                duck.style.transform = "rotate(30deg)";
             }
             break;
-        case 's':
-            if (top == 750) {
-            } else {
-                top = top + step;
-                img.style.top = top + "px";
+        case "S":
+            if (topValue <= 1000) {
+                topValue = topValue + step;
+                duck.style.top = topValue + "px";
+                duck.style.transform = "rotate(90deg)";
             }
             break;
-        case 'sw':
-            if (top == 750 || left == 0) {
-            } else {
-                left = left - step;
-                img.style.left = left + "px";
-                top = top + step;
-                img.style.top = top + "px";
+        case "SW":
+            if (topValue <= 1000 || leftValue >= 10) {
+                topValue = topValue + step;
+                leftValue = leftValue - step;
+                duck.style.left = leftValue + "px";
+                duck.style.top = topValue + "px";
+                duck.style.transform = "scaleX(-1)" + "rotate(30deg)";
             }
             break;
-        case 'w':
-            if (left == 0) {
-            } else {
-                left = left - step;
-                img.style.left = left + "px";
+        case "W":
+            if (leftValue >= 10) {
+                leftValue = leftValue - step;
+                duck.style.left = leftValue + "px";
+                duck.style.transform = "scaleX(-1)";
             }
             break;
-        case 'nw':
-            if (top == 750 || left == 0) {
-            } else {
-                left = left - step;
-                img.style.left = left + "px";
-                top = top - step;
-                img.style.top = top + "px";
+        case "NW":
+            if (topValue >= 0 && leftValue >= 10) {
+                topValue = topValue - step;
+                leftValue = leftValue - step;
+                duck.style.top = topValue + "px";
+                duck.style.left = leftValue + "px";
+                duck.style.transform = "scaleX(-1)" + "rotate(-30deg)";
             }
-            break;
-        default:
             break;
     }
 }
-
-
-
-var miss = 0;
-var score = 0;
-
-function hitOrMiss(id) {
-    console.log(miss)
-    if(miss <21 && score < 21){
-    switch (id) {
-        case 0:
-            missCount.innerHTML = miss++;
-            break;
-        case 1:
-            scorePrint.innerHTML = score++;
-            break;
-    }
-    if (score == 21) {
-        document.getElementById("win").classList.remove("d-none");
-    } else if (miss == 21) {
-        document.getElementById("lose").classList.remove("d-none");
-    }
-}
-}
-
-function restart() {
-    window.location.reload()
-}
-
-function moveDuck() {
+function randomMoveMent() {
     setInterval(function () {
-        //Code dat iedere 0,5 seconden uitgevoerd wordt.
-        var random = directions[Math.floor(Math.random() * directions.length)];
-        fly(random)
-    }, 500); //Hoe lang de interval is tussen uitvoering van deze functie.
+        fly(directions[Math.floor(Math.random() * directions.length)]);
+    }, 1000);
 }
-
-
-
-moveDuck()
+var missCounterID = document.getElementById("miss");
+var hitCounterID = document.getElementById("hit");
+var miss = 0;
+var hit = 0;
+function HitOrMiss(id) {
+    if (hit != 20 && miss != 20) {
+        if (id == 0) {
+            console.log("background hit");
+            miss++;
+            var missString = miss.toString();
+            missCounterID.innerHTML = "Miss: " + missString;
+        }
+        else if (id == 1) {
+            console.log("duck hit");
+            hit++;
+            var hitString = hit.toString();
+            hitCounterID.innerHTML = "Hit: " + hitString;
+        }
+    }
+    else if (hit == 20) {
+        alert("U heeft gewonnen");
+        location.reload();
+    }
+    else if (miss == 20) {
+        alert("U heeft verloren");
+        location.reload();
+    }
+}
+randomMoveMent();
